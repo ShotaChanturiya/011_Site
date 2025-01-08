@@ -106,3 +106,22 @@
     padding-top: 10px;
     padding-bottom: 60px;
 }
+.main{
+    background-color: rgb(240, 240, 240);
+    color: black;
+}
+
+.telegram{
+    width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.telegram_box{
+    display: flex;
+    border: 1px solid black;
+    font-size: smaller;
+    font-weight: bold;
+}
