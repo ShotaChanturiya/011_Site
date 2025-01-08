@@ -121,7 +121,63 @@
 
 .telegram_box{
     display: flex;
+    justify-content: space-between;
+    width: 550px;
+    margin: 0 auto;
     border: 1px solid black;
-    font-size: smaller;
+    border-radius: 5px;
+}
+
+.box_frame{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 5px;
+    padding: 15px;
+}
+.box_head{
     font-weight: bold;
+}
+
+.box_body_list{
+    font-size: small;
+    list-style-type: none;
+    color: gray;
+}
+
+.button_pink{
+    background-color: pink;
+    color: red;
+    border-radius: 3px;
+    border: 0px;
+    padding: 10px 20px;
+}
+
+.telegram_box_pic{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.bus_box{
+    display: flex;
+    justify-content: space-between;
+    width: 550px;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.button_red{
+    background-color: rgba(255, 0, 0, 0.65);
+    color: white;
+    border-radius: 3px;
+    border: 0px;
+    padding: 10px 20px;
+}
+
+.bus_box_pic{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
