@@ -109,23 +109,22 @@
 .main{
     background-color: rgb(240, 240, 240);
     color: black;
+    padding: 0px;
 }
 
 .telegram{
-    width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
     display: flex;
     justify-content: space-between;
 }
 
 .telegram_box{
     display: flex;
-    justify-content: space-between;
-    width: 550px;
-    margin: 0 auto;
+    justify-content: space-between;   
+    width: 590px;
     border: 1px solid black;
     border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .box_frame{
@@ -162,10 +161,11 @@
 .bus_box{
     display: flex;
     justify-content: space-between;
-    width: 550px;
-    margin: 0 auto;
+    width: 590px;
     border: 1px solid black;
     border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .button_red{
@@ -180,4 +180,26 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.direction{
+    display: flex;
+    justify-content: space-between;
+}
+
+.direction_left{
+    width: 68%;
+}
+
+.direction_right {
+    width: 30%;
+}
+
+.direction_box{
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 5px;    
 }
