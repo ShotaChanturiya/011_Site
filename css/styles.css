@@ -186,9 +186,9 @@ a:hover {
     width: 590px;
     background-color: white;
     border-radius: 10px;
+    box-shadow: 1px 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
     margin-bottom: 20px;
-    box-shadow: 1px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .box_frame{
@@ -291,9 +291,9 @@ a:hover {
     margin: 0 auto;
     background-color: white;
     border-radius: 10px;
-    margin-top: 0px;
-    margin-bottom: 20px;
     box-shadow: 1px 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 0px;
+    margin-bottom: 60px;
 }
 
 .box_frame_direction{
@@ -403,7 +403,6 @@ a:hover {
 }
 
 .question_box{
-    margin: 0 auto;
     background-color: white;
     border-radius: 10px;
     margin-top: 0px;
@@ -432,9 +431,10 @@ a:hover {
     background-color: rgb(207, 208, 249);
     border-radius: 10px;
     margin-top: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     box-shadow: 1px 0 10px rgba(0, 0, 0, 0.1);
     padding: 30px;
+    padding-top: 10px;
 }
 
 .subscribe_box_direction{
@@ -487,4 +487,77 @@ a:hover {
     width: 30px;
     top: -15px;
     left: 200px;
+}
+
+.footer{
+    background-color: white;
+    color: black;
+    padding: 0px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.footer_box{
+    display: flex;
+    flex-direction: column;
+}
+
+.footer_pic{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer_pic-item-left{
+    display: flex;
+    justify-content: flex-start;
+    width: calc(100% / 6);
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+.footer_pic-item-right{
+    display: flex;
+    justify-content: flex-end;
+    width: calc(100% / 6);
+}
+
+.footer_text{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer_text-item{
+    display: flex;
+    justify-content: flex-start;
+    width: calc(100% / 6);
+}
+
+.footer_text-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.footer_text-item-title{
+    color: black;
+    font-weight: bold;
+    font-size: 14px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.footer_text-item-text{
+    font-size: 14px;
+    color: black;
+    font-weight: 350;
+    
+}
+
+.footer_text-item-text ul{
+    list-style-type: none;
+    line-height: 1.9;
+
 }
