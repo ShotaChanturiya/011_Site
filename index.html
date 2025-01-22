@@ -41,27 +41,59 @@
 <!-- This is a main table start -->
             <div class="logo_table">
                 
-                    <div class="logo_table_box">
-                        <div class="logo_table_box_cell">
-                            <div>Откуда</div>
+                <div class="logo_table_box">
+                    <div class="logo_table_cell">
+                        <label for="cityFrom" class="logo_table_cell-small-text">Откуда</label>
+                        <label name="cityFrom" id="cityFrom" class="logo_table_cell-text-desc" placeholder="">Варшава</label>
+                        <div class="logo_table_cell_pop">
+                            <div>
+                                <span class="logo_table_cell_pop-desc">Выбранный город</span>
+                            </div>
+                            <div class="logo_table_cell_pop-row">
+                                <img src="../011_Site/img/Point.png"><span class="logo_table_cell_pop-desc-text">Варшава</span>
+                            </div>
+                            <div>
+                                <span class="logo_table_cell_pop-desc">Ближайшие аэропорты</span>
+                            </div>
+                            <div class="logo_table_cell_pop-row">
+                                <img src="../011_Site/img/Point.png"><span class="logo_table_cell_pop-desc-text">Кишинев</span>
+                            </div>
+                            <div class="logo_table_cell_pop-row">
+                                <img src="../011_Site/img/Point.png"><span class="logo_table_cell_pop-desc-text">Балице</span>
+                            </div>
                         </div>
-                        <div class="logo_table_box_cell">
-                            <span>Куда</span>
-                        </div>
-                        <div class="logo_table_box_cell_way">
-                            <span>Туда</span><span>|</span><span>Обратно</span>
-                        </div>
-                        <div class="logo_table_box_cell">
-                            <span>Пассажиры, класс</span>
-                        </div>
-
                     </div>
+                    <button class="logo_table_box-switch">⇄</button>
+                    <div class="logo_table_cell">
+                        <label for="cityTo" class="logo_table_cell-text">Куда</label>
+                    </div>
+
+                    <div class="logo_table_cell_way">
+                        <div class="logo_table_cell_way_cell">
+                            <div>
+                                <label for="dateFrom" class="logo_table_cell-text">Туда</label>
+                            </div>
+                            <div>
+                                <span class="logo_table_cell-text">|</span>
+                            </div>
+                        </div>
+                        <div class="logo_table_cell_way_cell">
+                            <label for="dateTo" class="logo_table_cell-text">Обратно</label>
+                        </div>    
+                    </div>
+
+                    <div class="logo_table_cell">
+                        <label for="details" class="logo_table_cell-small-text">Пассажиры, класс</label>
+                        <label name="cityFrom" id="cityFrom" class="logo_table_cell-text-desc" placeholder="">1 пассажир, любой</label>
+                    </div>
+                </div>
                     <div>
-                        <button class="button_find">Найти</button>
+                        <button class="button_find" type="submit">Найти</button>
                     </div>
                 
+                
             </div>
-<!-- This is a main table stop -->
+<!-- this is a main table stop -->
             <div class="logo_find_track">
                 <img src="../011_Site/img/icons/track.png" alt="track">
                 <p>Сложный маршрут</p>
@@ -268,7 +300,7 @@
                 <div class="subscribe_box_input">
                     <input class="subscribe_box_input-input" type="email" placeholder="Email *"></input>
                     <button class="subscribe_box_input-button" type="submit" alt="Подписаться">></button>
-                    <button class="subscribe_box_input-alert" alt="Введите e-mail">!</button>
+                    <button class="subscribe_box_input-alert">!</button>
                 </div>
               </div>
             </div>

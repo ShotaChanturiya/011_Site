@@ -1,3 +1,7 @@
+:root{
+    --box-background-color: #FFFFFF;
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -5,7 +9,6 @@
     font-optical-sizing: auto;
     font-style: normal;
 }
-
 a {
     text-decoration: none;
     color: blue;
@@ -82,6 +85,7 @@ a:hover {
     display: flex;
     justify-content: flex-start;
     gap: 10px;
+    padding-bottom: 15px;
 }
 
 .logo_menu_button{   
@@ -118,39 +122,124 @@ a:hover {
 }
 
 .logo_table{
-    padding-top: 15px;
     display: flex; 
     justify-content: space-between;
     align-items: center;
+    height: 80px;
 }
 
 .logo_table_box{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: 1030px;
-    height: 75px;
+    height: 77px;
     border: 1px solid white;
     border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
+    box-sizing: border-box;
+    background-color: var(--box-background-color);
 }
 
-.logo_table_box_cell{
+.logo_table_cell{
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     width: 250px;
-    padding: 20px;
+    padding: 20px 20px;
     margin: 0;
+    box-sizing: border-box;
 }
 
-.logo_table_box_cell_way{
+.logo_table_cell:first-child{
+    border-right: 1px solid gray;
+}
+
+.logo_table_cell_pop{
+    position: absolute;
+    background-color: var(--box-background-color);
     border: 1px solid gray;
+    border-radius: 15px;
+    color: red;
+    height: 230px;
+    width: 500px;
+    top: 80px;
+    left: 0px;
+    font-size: 20px;
+    display: block;
+}
+.logo_table_cell_pop-row{
     display: flex;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+.logo_table_cell_pop-row:hover{
+    background-color: #d2d6db;
+}
+.logo_table_cell_way{
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
     width: 280px;
-    padding: 20px;
     margin: 0;
 }
 
+.logo_table_cell_way_cell{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    padding-left: 20px;
+}
+.logo_table_box-switch{
+    position: absolute;
+    background-color: var(--box-background-color);
+    border: 1px solid red;
+    border-radius: 15px;
+    color: red;
+    height: 30px;
+    width: 30px;
+    top: 23px;
+    left: 233px;
+    font-size: 20px;
+}
+.logo_table_cell-text{
+    color: gray;
+}
+.logo_table_cell-small-text{
+    color: gray;
+    font-size: small;
+}
+.logo_table_cell-text-desc{
+    color: black;
+    font-size: 16px;
+    border: 0px;
+}
+.logo_table_cell_pop-desc{
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 50px;
+}
+.logo_table_cell_pop-desc-text{
+    color: black;
+    font-size: 14px;
+    padding-left: 0px;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 40px;
+}
 .button_find{
     background-color: rgba(255, 0, 0, 0.65);
     color: white;
@@ -184,7 +273,7 @@ a:hover {
     display: flex;
     justify-content: space-between;   
     width: 590px;
-    background-color: white;
+    background-color: var(--box-background-color);
     border-radius: 10px;
     box-shadow: 1px 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
@@ -289,7 +378,7 @@ a:hover {
 
 .direction_box{
     margin: 0 auto;
-    background-color: white;
+    background-color: var(--box-background-color);
     border-radius: 10px;
     box-shadow: 1px 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 0px;
@@ -328,7 +417,7 @@ a:hover {
 
 .rate_box{
     margin: 0 auto;
-    background-color: white;
+    background-color: var(--box-background-color);
     border-radius: 10px;
     margin-top: 0px;
     margin-bottom: 20px;
@@ -389,7 +478,6 @@ a:hover {
     font-stretch: extra-expanded;    
     letter-spacing: 1;
     line-height: 19px;
-
 }
 
 .box_frame_information-item-title{
@@ -403,7 +491,7 @@ a:hover {
 }
 
 .question_box{
-    background-color: white;
+    background-color: var(--box-background-color);
     border-radius: 10px;
     margin-top: 0px;
     margin-bottom: 25px;
