@@ -42,10 +42,11 @@
             <div class="logo_table">
                 
                 <div class="logo_table_box">
-                    <div class="logo_table_cell">
-                        <label for="cityFrom" class="logo_table_cell-small-text">Откуда</label>
-                        <label name="cityFrom" id="cityFrom" class="logo_table_cell-text-desc" placeholder="">Варшава</label>
-                        <div class="logo_table_cell_pop">
+
+                    <div class="logo_table_cell" id="from_cell">
+                        <label class="logo_table_cell-small-text">Откуда</label>
+                        <label id="xxxx" class="logo_table_cell-text-desc" placeholder="">Варшава</label>
+                        <div class="logo_table_cell_pop_from">
                             <div>
                                 <span class="logo_table_cell_pop-desc">Выбранный город</span>
                             </div>
@@ -63,12 +64,31 @@
                             </div>
                         </div>
                     </div>
-                    <button class="logo_table_box-switch">⇄</button>
-                    <div class="logo_table_cell">
-                        <label for="cityTo" class="logo_table_cell-text">Куда</label>
+
+                    <button class="logo_table_box-switch" id="switch_cell">⇄</button>
+
+                    <div class="logo_table_cell" id="to_cell">
+                        <label class="logo_table_cell-text">Куда</label>
+                        <div class="logo_table_cell_pop_to">
+                            <div>
+                                <span class="logo_table_cell_pop-desc">Выбранный город</span>
+                            </div>
+                            <div class="logo_table_cell_pop-row">
+                                <img src="../011_Site/img/Point.png"><span class="logo_table_cell_pop-desc-text">Варшава</span>
+                            </div>
+                            <div>
+                                <span class="logo_table_cell_pop-desc">Ближайшие аэропорты</span>
+                            </div>
+                            <div class="logo_table_cell_pop-row">
+                                <img src="../011_Site/img/Point.png"><span class="logo_table_cell_pop-desc-text">Кишинев</span>
+                            </div>
+                            <div class="logo_table_cell_pop-row">
+                                <img src="../011_Site/img/Point.png"><span class="logo_table_cell_pop-desc-text">Балице</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="logo_table_cell_way">
+                    <div class="logo_table_cell_way" id="date_cell">
                         <div class="logo_table_cell_way_cell">
                             <div>
                                 <label for="dateFrom" class="logo_table_cell-text">Туда</label>
@@ -82,16 +102,16 @@
                         </div>    
                     </div>
 
-                    <div class="logo_table_cell">
+                    <div class="logo_table_cell" id="pass_cell">
                         <label for="details" class="logo_table_cell-small-text">Пассажиры, класс</label>
-                        <label name="cityFrom" id="cityFrom" class="logo_table_cell-text-desc" placeholder="">1 пассажир, любой</label>
+                        <label name="passanger" id="passanger" class="logo_table_cell-text-desc" placeholder="">1 пассажир, любой</label>
                     </div>
                 </div>
                     <div>
                         <button class="button_find" type="submit">Найти</button>
                     </div>
-                
-                
+
+
             </div>
 <!-- this is a main table stop -->
             <div class="logo_find_track">

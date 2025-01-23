@@ -156,7 +156,7 @@ a:hover {
     border-right: 1px solid gray;
 }
 
-.logo_table_cell_pop{
+.logo_table_cell_pop_from{
     position: absolute;
     background-color: var(--box-background-color);
     border: 1px solid gray;
@@ -167,8 +167,22 @@ a:hover {
     top: 80px;
     left: 0px;
     font-size: 20px;
-    display: block;
+    display: none;
 }
+.logo_table_cell_pop_to{
+    position: absolute;
+    background-color: var(--box-background-color);
+    border: 1px solid gray;
+    border-radius: 15px;
+    color: red;
+    height: 230px;
+    width: 500px;
+    top: 80px;
+    left: 250px;
+    font-size: 20px;
+    display: none;
+}
+
 .logo_table_cell_pop-row{
     display: flex;
     justify-content: flex-start;
