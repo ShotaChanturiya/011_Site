@@ -191,6 +191,7 @@ a:hover {
 .logo_table_cell_pop-row:hover{
     background-color: #d2d6db;
 }
+
 .logo_table_cell_way{
     border-left: 1px solid gray;
     border-right: 1px solid gray;
@@ -228,10 +229,21 @@ a:hover {
     color: gray;
     font-size: small;
 }
-.logo_table_cell-text-desc{
+.logo_table_cell-text-desc-from{
     color: black;
     font-size: 16px;
     border: 0px;
+    display: none;
+}
+.logo_table_cell-text-desc-to{
+    color: black;
+    font-size: 16px;
+    border: 0px;
+    display: none;
+}
+
+.logo_table_cell_pop-desc-selected-to{
+    display: none;
 }
 .logo_table_cell_pop-desc{
     color: black;
