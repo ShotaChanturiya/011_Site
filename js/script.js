@@ -59,22 +59,36 @@ const row_from_0_item = document.querySelector('#row_from_0');
 const row_from_1_item = document.querySelector('#row_from_1');
 const row_from_2_item = document.querySelector('#row_from_2');
 
-row_from_0_item.textContent = null;
+row_from_0_item.style.display = 'none';
+
+row_from_0_item.addEventListener('click', ()=> {    
+    from_label_clk.textContent = fromArr[0];
+    row_from_selected.textContent = fromArr[0];
+    row_from_0_item.style.display = 'none';
+    row_from_1_item.style.display = 'flex';
+    row_from_2_item.style.display = 'flex';
+    selected_from = fromArr[0];
+    console.log(selected_from);
+})
 
 row_from_1_item.addEventListener('click', ()=> {    
     from_label_clk.textContent = fromArr[1];
     row_from_selected.textContent = fromArr[1];
-    
-    row_from_1_item.textContent = null;
-    from_0.textContent = fromArr[0];
-    from_0_item.textContent = row_from_0_item;
-   // from_2_item.textContent = fromArr[2];
-
+    row_from_0_item.style.display = 'flex';
+    row_from_1_item.style.display = 'none';
+    row_from_2_item.style.display = 'flex';
+    selected_from = fromArr[1];
+    console.log(selected_from);
 })
 
 row_from_2_item.addEventListener('click', ()=> {
     from_label_clk.textContent = fromArr[2];
     row_from_selected.textContent = fromArr[2];
+    row_from_0_item.style.display = 'flex';
+    row_from_1_item.style.display = 'flex';
+    row_from_2_item.style.display = 'none';
+    selected_from = fromArr[2];
+    console.log(selected_from);
 })
 
 
@@ -108,10 +122,12 @@ const logo_table_cell_pop_desc_selected_to = document.querySelector('.logo_table
 row_to_0_item.addEventListener('click', ()=> {
     logo_table_cell_pop_desc_selected_to.style.display = 'block';
     to_cell.style.display = 'none';
-    to_label.style.display = 'block';
+    to_label.style.display = 'flex';
     to_label_clk.textContent = toArr[0];
     row_to_selected.textContent = toArr[0];
-    row_to_0_item.textContent = null;
+    row_to_0_item.style.display = 'none';
+    row_to_1_item.style.display = 'flex';
+    row_to_2_item.style.display = 'flex';
     pop_to_selected.style.height = '230px';
     to_label_logo.style.fontSize = 'small';
     selected_to = toArr[0];
@@ -120,10 +136,12 @@ row_to_0_item.addEventListener('click', ()=> {
 row_to_1_item.addEventListener('click', ()=> {
     logo_table_cell_pop_desc_selected_to.style.display = 'block';
     to_cell.style.display = 'none';
-    to_label.style.display = 'block';
+    to_label.style.display = 'flex';
     to_label_clk.textContent = toArr[1];
     row_to_selected.textContent = toArr[1];
-    row_to_1_item.textContent = null;
+    row_to_0_item.style.display = 'flex';
+    row_to_1_item.style.display = 'none';
+    row_to_2_item.style.display = 'flex';
     pop_to_selected.style.height = '230px';
     to_label_logo.style.fontSize = 'small';
     selected_to = toArr[1];
@@ -132,10 +150,12 @@ row_to_1_item.addEventListener('click', ()=> {
 row_to_2_item.addEventListener('click', ()=> {
     logo_table_cell_pop_desc_selected_to.style.display = 'block';
     to_cell.style.display = 'none';
-    to_label.style.display = 'block';
+    to_label.style.display = 'flex';
     to_label_clk.textContent = toArr[2];
     row_to_selected.textContent = toArr[2];
-    row_to_2_item.textContent = null;
+    row_to_0_item.style.display = 'flex';
+    row_to_1_item.style.display = 'flex';
+    row_to_2_item.style.display = 'none';
     pop_to_selected.style.height = '230px';
     to_label_logo.style.fontSize = 'small';
     selected_to = toArr[2];
