@@ -257,6 +257,12 @@ a:hover {
     border: 0px;
     display: none;
 }
+.logo_table_cell-text-desc-pass{
+    color: black;
+    font-size: 16px;
+    border: 0px;
+    display: block;
+}
 
 .logo_table_cell_pop-desc-selected-to{
     display: none;
@@ -283,6 +289,211 @@ a:hover {
     align-items: center;
     height: 40px;
 }
+
+/*    секция пассажиры        */
+
+.logo_table_cell_pop_pass{
+    position: absolute;
+    background-color: var(--box-background-color);
+    border: 1px solid gray;
+    border-radius: 15px;
+    height: 400px;
+    width: 350px;
+    top: 80px;
+    left: 678px;
+    font-size: 20px;
+    display: none;
+}
+
+.logo_table_cell_pop-desc-comm{  /*  комментарий    */
+    color: gray;
+    font-size: 14px;
+    font-weight: normal;
+    padding-left: 20px;
+    padding-top: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50px;
+}
+
+.logo_table_cell_pop-row-pass{  /*  строка    */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+    height: 60px;
+}
+
+.logo_table_cell_pop-row-pass-last {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+    height: 60px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+  }
+
+.logo_table_cell_pop-row-pass-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.logo_table_cell_pop-row-pass-right{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo_table_cell_pop-row-pass-right-btn {  /*  кнопки - и +    */
+    background-color: white;
+    font-size: 25px;
+    font-weight: 300;
+    color: gray;
+    box-shadow: 1px 1px 1px 1px rgba(128, 128, 128, 0.3);
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    border: 0px;
+    transition: 0s;
+}
+
+.logo_table_cell_pop-row-pass-right-btn:hover {
+    cursor: pointer;
+}
+
+.logo_table_cell_pop-row-pass-right-btn:active {
+    transform: translateY(-2px);
+}
+
+.pass_row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+.pass_help{
+    background-color: var(--box-background-color);
+    box-shadow: 1px 1px 1px 1px rgba(128, 128, 128, 0.3);
+    border-radius: 10px;
+    height: 20px;
+    width: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: gray;
+    border: 0px;
+}
+.logo_table_cell_pop-pass-desc-text{
+    color: black;
+    font-size: 16px;
+    padding-left: 20px;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.logo_table_cell_pop-pass-desc-small-text{
+    color: gray;
+    font-size: 14px;
+    padding-left: 20px;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;  
+}
+.logo_table_cell_pop-pass-desc-text-quantity{
+    color: black;
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.logo_table_cell_pop-desc-class {  /*  класс пассажиров - строка  */
+    color: black;
+    font-size: 16px;
+    font-weight: normal;
+    padding-left: 20px;
+    padding-top: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50px;
+}
+.logo_table_cell_pop-desc-button {  /*  класс пассажиров - строка кнопок */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 20px;
+    gap: 10px;
+    height: 30px;
+}
+.logo_table_cell_pop-desc-class-button {
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px rgba(128, 128, 128, 0.3);
+    color:black;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 0px;
+    transition: 0.4s;
+}
+
+.logo_table_cell_pop-desc-class-button_select {
+    background-color: rgba(255, 0, 0, 0.7);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 0px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    transition: 0.4s;
+}
+
+.logo_table_cell_pop-desc-class-button:hover{
+    transform: translateY(-3px);
+    cursor: pointer;
+}
+
+.logo_table_cell_pop-desc-class-button_select:hover{
+    transform: translateY(-3px);
+    cursor: pointer;
+}
+
+.logo_table_cell_pop-desc-button-ok { /*  класс пассажиров - строка кнопки ОК */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    padding-top: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    height: 40px;
+}
+
+.logo_table_cell_pop-desc-class-button_ok {
+    background-color: rgba(255, 0, 0, 0.65);
+    color: white;
+    border-radius: 5px;
+    border: 0px;
+    padding: 10px 150px;
+}
+
+
+
+/*    секция кнопка поиска       */
 .button_find{
     background-color: rgba(255, 0, 0, 0.65);
     color: white;

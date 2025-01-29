@@ -22,6 +22,7 @@ let tmpArr = []; //tmpArr
 // Дизайн - выпадающие pop-ы
 const from_cell = document.querySelector('.logo_table_cell_pop_from');
 const to_cell = document.querySelector('.logo_table_cell_pop_to');
+const pass_cell = document.querySelector('.logo_table_cell_pop_pass');
 const button_find_clk = document.querySelector('.button_find');
 
 
@@ -45,14 +46,55 @@ function closePopTo() {
 // -------------------------------------------------------------------------------------------------------------------------
 // Действие - выпадающие pop-ы
 
-from_clk.addEventListener('click', ()=> {
-    from_cell.style.display = 'block';
-})
+let showfrom = false;
+let showto = false;
+let showpass = false;
 
+from_clk.addEventListener('click', ()=> {
+    if(showfrom) {
+        from_cell.style.display = 'none';
+        
+    } else {
+        from_cell.style.display = 'block';
+        to_cell.style.display = 'none';
+        pass_cell.style.display = 'none';
+        showto = false;
+        showpass = false;
+
+    }
+    showfrom = !showfrom
+})
 
 to_clk.addEventListener('click', ()=> {
-    to_cell.style.display = 'block';
+    if(showto) {
+        to_cell.style.display = 'none';
+        //to_clk.style.border = 'none';
+    } else {
+        from_cell.style.display = 'none';
+        to_cell.style.display = 'block';
+        pass_cell.style.display = 'none';
+        showfrom = false;
+        showpass = false;
+        //to_clk.style.border = '2px solid blue';
+    }
+    showto = !showto
 })
+
+pass_clk.addEventListener('click', ()=> {
+    if(showpass) {
+        pass_cell.style.display = 'none';
+        //to_clk.style.border = 'none';
+    } else {
+        from_cell.style.display = 'none';
+        to_cell.style.display = 'none';
+        pass_cell.style.display = 'block';
+        showfrom = false;
+        showto = false;        
+        //to_clk.style.border = '2px solid blue';
+    }
+    showpass = !showpass
+})
+
 
 button_find_clk.addEventListener('click', ()=> {
     from_cell.style.display = 'none';
@@ -306,3 +348,5 @@ switch_cell_clk.addEventListener('click', ()=> {
 })
 
 // -------------------------------------------------------------------------------------------------------------------------
+// 4. Начало - обработчик для пассажиры
+
