@@ -362,15 +362,12 @@ a:hover {
     width: 40px;
     border-radius: 20px;
     border: 0px;
-    transition: 0s;
+    transition: 0.4s;
 }
 
 .logo_table_cell_pop-row-pass-right-btn:hover {
     cursor: pointer;
-}
-
-.logo_table_cell_pop-row-pass-right-btn:active {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 }
 
 .pass_row{
@@ -479,18 +476,22 @@ a:hover {
     padding-top: 25px;
     padding-left: 20px;
     padding-right: 20px;
-
     height: 40px;
 }
 
-.logo_table_cell_pop-desc-class-button_ok {
+.logo_table_cell_pop-desc-class-button_ok { /*  кнопки ОК */
     background-color: rgba(255, 0, 0, 0.65);
     color: white;
     border-radius: 5px;
     border: 0px;
     padding: 10px 150px;
+    transition: 0.4s;
 }
 
+.logo_table_cell_pop-desc-class-button_ok:hover{
+    transform: translateY(-3px);
+    cursor: pointer;
+}
 
 
 /*    секция кнопка поиска       */

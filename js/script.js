@@ -17,6 +17,11 @@ let toObj = [ //toArr
 
 let tmpArr = []; //tmpArr
 
+let adult = 1;
+let children = 0;
+let baby = 0;
+let pass_quantity = adult + children + baby;
+let pass_class = 'любой';
 
 // -------------------------------------------------------------------------------------------------------------------------
 // Дизайн - выпадающие pop-ы
@@ -350,3 +355,152 @@ switch_cell_clk.addEventListener('click', ()=> {
 // -------------------------------------------------------------------------------------------------------------------------
 // 4. Начало - обработчик для пассажиры
 
+pass_cell.addEventListener('click', (e)=>{
+    e.stopPropagation();
+})
+
+const pass_total_inf = document.querySelector('#pass_label');
+
+const adult_minus_clk = document.querySelector('#adult_minus');
+const adult_quantity_clk = document.querySelector('#adult_quantity');
+const adult_plus_clk = document.querySelector('#adult_plus');
+
+const children_minus_clk = document.querySelector('#children_minus');
+const children_quantity_clk = document.querySelector('#children_quantity');
+const children_plus_clk = document.querySelector('#children_plus');
+
+const baby_minus_clk = document.querySelector('#baby_minus');
+const baby_quantity_clk = document.querySelector('#baby_quantity');
+const baby_plus_clk = document.querySelector('#baby_plus');
+
+const class_any_clk = document.querySelector('#class_any');
+const class_business_clk = document.querySelector('#class_business');
+const class_economy_clk = document.querySelector('#class_economy');
+
+
+pass_total_inf.textContent = `${pass_quantity} пассажир, ${pass_class}`;
+
+
+adult_quantity_clk.textContent = adult;
+children_quantity_clk.textContent = children;
+baby_quantity_clk.textContent = baby;
+
+// adult block
+
+adult_plus_clk.addEventListener('click', ()=> {
+    
+    
+    if (pass_quantity < 9) {
+    if (adult < 9) {
+        adult ++;
+        pass_quantity = adult + children + baby;
+        pass_total_inf.textContent = `${pass_quantity} пассажир, ${pass_class}`;
+        adult_quantity_clk.textContent = adult;
+        }
+    }
+})
+
+adult_minus_clk.addEventListener('click', ()=> {
+    if (adult > 1) {
+        adult --;
+        adult_quantity_clk.textContent = adult;
+        pass_quantity = adult + children + baby;
+        pass_total_inf.textContent = `${pass_quantity} пассажир, ${pass_class}`;
+    }
+})
+
+// children block
+
+children_plus_clk.addEventListener('click', ()=> {
+    
+    
+    if (pass_quantity < 9) {
+    if (children < 8) {
+        children ++;
+        children_quantity_clk.textContent = children;
+        pass_quantity = adult + children + baby;
+        pass_total_inf.textContent = `${pass_quantity} пассажир, ${pass_class}`;
+
+        }
+    }
+})
+
+children_minus_clk.addEventListener('click', ()=> {
+    if (children > 0) {
+        children --;
+        children_quantity_clk.textContent = children;
+        pass_quantity = adult + children + baby;
+        pass_total_inf.textContent = `${pass_quantity} пассажир, ${pass_class}`;
+    }
+})
+
+// baby block
+
+baby_plus_clk.addEventListener('click', ()=> {
+    
+    
+    if (pass_quantity < 9) {
+    if (baby < 8) {
+        baby ++;
+        baby_quantity_clk.textContent = baby;
+        pass_quantity = adult + children + baby;
+        pass_total_inf.textContent = `${pass_quantity} пассажир, ${pass_class}`;
+
+        }
+    }
+})
+
+baby_minus_clk.addEventListener('click', ()=> {
+    if (baby > 0) {
+        baby --;
+        baby_quantity_clk.textContent = baby;
+        pass_quantity = adult + children + baby;
+        pass_total_inf.textContent = `${pass_quantity} пассажир, ${pass_class}`;
+    }
+})
+
+// блок выбора Класс-а
+
+class_any_clk.addEventListener('click', ()=> {
+    pass_class = 'любой';
+    class_any_clk.className = 'logo_table_cell_pop-desc-class-button_select';
+    class_business_clk.className = 'logo_table_cell_pop-desc-class-button';
+    class_economy_clk.className = 'logo_table_cell_pop-desc-class-button';
+    pass_total_inf.textContent = `${pass_quantity} пассажир, ${pass_class}`;
+})
+
+class_business_clk.addEventListener('click', ()=> {
+    pass_class = 'бизнес';
+    class_any_clk.className = 'logo_table_cell_pop-desc-class-button';
+    class_business_clk.className = 'logo_table_cell_pop-desc-class-button_select';
+    class_economy_clk.className = 'logo_table_cell_pop-desc-class-button';
+    pass_total_inf.textContent = `${pass_quantity} пассажир, ${pass_class}`;
+})
+
+class_economy_clk.addEventListener('click', ()=> {
+    pass_class = 'эконом';
+    class_any_clk.className = 'logo_table_cell_pop-desc-class-button';
+    class_business_clk.className = 'logo_table_cell_pop-desc-class-button';
+    class_economy_clk.className = 'logo_table_cell_pop-desc-class-button_select';
+    pass_total_inf.textContent = `${pass_quantity} пассажир, ${pass_class}`;
+})
+
+// кнопка Ок (подтверждение выбора кол-ва пассажиров и класса
+
+const class_apply_clk = document.querySelector('#class_apply');
+
+class_apply_clk.addEventListener('click', ()=> {
+    if(showpass) {
+        pass_cell.style.display = 'none';
+        //to_clk.style.border = 'none';
+        } else {
+        from_cell.style.display = 'none';
+        to_cell.style.display = 'none';
+        pass_cell.style.display = 'block';
+        showfrom = false;
+        showto = false;        
+        //to_clk.style.border = '2px solid blue';
+    }
+    showpass = !showpass
+    
+})
