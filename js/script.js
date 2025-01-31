@@ -23,11 +23,13 @@ let baby = 0;
 let pass_quantity = adult + children + baby;
 let pass_class = 'любой';
 
+
 // -------------------------------------------------------------------------------------------------------------------------
 // Дизайн - выпадающие pop-ы
 const from_cell = document.querySelector('.logo_table_cell_pop_from');
 const to_cell = document.querySelector('.logo_table_cell_pop_to');
 const pass_cell = document.querySelector('.logo_table_cell_pop_pass');
+const date_cell = document.querySelector('.logo_table_cell_pop_date');
 const button_find_clk = document.querySelector('.button_find');
 
 
@@ -53,57 +55,137 @@ function closePopTo() {
 
 let showfrom = false;
 let showto = false;
+let showdate = false;
 let showpass = false;
+
 
 from_clk.addEventListener('click', ()=> {
     if(showfrom) {
         from_cell.style.display = 'none';
-        
+        from_clk.style.border = 'none';
+        from_clk.style.borderRight = '1px solid gray';
     } else {
         from_cell.style.display = 'block';
         to_cell.style.display = 'none';
+        date_cell.style.display = 'none';
         pass_cell.style.display = 'none';
         showto = false;
+        showdate = false;
         showpass = false;
-
+        from_clk.style.border = '1px solid blue';
+//закрываю бордеры
+        to_cell.style.display = 'none';
+        to_clk.style.border = 'none';
+        date_cell.style.display = 'none';
+        date_clk.style.border = 'none';
+        date_clk.style.borderLeft = '1px solid gray';
+        date_clk.style.borderRight = '1px solid gray';
+        pass_cell.style.display = 'none';
+        pass_clk.style.border = 'none';
     }
-    showfrom = !showfrom
+    showfrom = !showfrom;
 })
 
 to_clk.addEventListener('click', ()=> {
     if(showto) {
         to_cell.style.display = 'none';
-        //to_clk.style.border = 'none';
+        to_clk.style.border = 'none';
     } else {
         from_cell.style.display = 'none';
         to_cell.style.display = 'block';
+        date_cell.style.display = 'none';
         pass_cell.style.display = 'none';
         showfrom = false;
+        showdate = false;
         showpass = false;
-        //to_clk.style.border = '2px solid blue';
+        to_clk.style.border = '1px solid blue';
+//закрываю бордеры
+        from_cell.style.display = 'none';
+        from_clk.style.border = 'none';
+        from_clk.style.borderRight = '1px solid gray';
+        date_cell.style.display = 'none';
+        date_clk.style.border = 'none';
+        date_clk.style.borderLeft = '1px solid gray';
+        date_clk.style.borderRight = '1px solid gray';
+        pass_cell.style.display = 'none';
+        pass_clk.style.border = 'none';
     }
-    showto = !showto
+    showto = !showto;
 })
+
+date_clk.addEventListener('click', ()=> {
+    if(showdate) {
+        date_cell.style.display = 'none';
+        date_clk.style.border = 'none';
+        date_clk.style.borderLeft = '1px solid gray';
+        date_clk.style.borderRight = '1px solid gray';
+    } else {
+        from_cell.style.display = 'none';
+        to_cell.style.display = 'none';
+        date_cell.style.display = 'block';
+        pass_cell.style.display = 'none';
+        showfrom = false;
+        showto = false;
+        showpass = false;
+        date_clk.style.border = '1px solid blue';
+//закрываю бордеры
+        from_cell.style.display = 'none';
+        from_clk.style.border = 'none';
+        from_clk.style.borderRight = '1px solid gray';
+        to_cell.style.display = 'none';
+        to_clk.style.border = 'none';
+        pass_cell.style.display = 'none';
+        pass_clk.style.border = 'none';
+    }
+    showdate = !showdate;
+})
+
 
 pass_clk.addEventListener('click', ()=> {
     if(showpass) {
         pass_cell.style.display = 'none';
-        //to_clk.style.border = 'none';
+        pass_clk.style.border = 'none';
     } else {
         from_cell.style.display = 'none';
         to_cell.style.display = 'none';
+        date_cell.style.display = 'none';
         pass_cell.style.display = 'block';
         showfrom = false;
-        showto = false;        
-        //to_clk.style.border = '2px solid blue';
+        showto = false;
+        showdate = false;
+        pass_clk.style.border = '1px solid blue';
+//закрываю бордеры
+        from_cell.style.display = 'none';
+        from_clk.style.border = 'none';
+        from_clk.style.borderRight = '1px solid gray';
+        to_cell.style.display = 'none';
+        to_clk.style.border = 'none';
+        date_cell.style.display = 'none';
+        date_clk.style.border = 'none';
+        date_clk.style.borderLeft = '1px solid gray';
+        date_clk.style.borderRight = '1px solid gray';
     }
-    showpass = !showpass
+    showpass = !showpass;
 })
 
 
 button_find_clk.addEventListener('click', ()=> {
     from_cell.style.display = 'none';
     to_cell.style.display = 'none';
+    date_cell.style.display = 'none';
+    pass_cell.style.display = 'none';
+    showfrom = false;
+    showto = false;
+    showdate = false;
+    showpass = false;
+
+    // необходимо обнулить все ячейки и привести к значениям по умолчанию
+    from_label_clk.textContent = fromObj[0].city;
+    to_label_clk.textContent = null;
+    
+    //закрыть бордеры
+
+
 })
 // -------------------------------------------------------------------------------------------------------------------------
 // 1. Начало - обработчик для "Откуда"
@@ -216,6 +298,7 @@ row_from_selected_item.addEventListener('click', ()=> {
 
 // -------------------------------------------------------------------------------------------------------------------------
 // 2. Начало - обработчик для "Куда"
+
 const to_label_clk = document.querySelector('#to_label');
 
 const to_label = document.querySelector('.logo_table_cell-text-desc-to');
@@ -360,6 +443,8 @@ pass_cell.addEventListener('click', (e)=>{
 })
 
 const pass_total_inf = document.querySelector('#pass_label');
+pass_total_inf.textContent = `${pass_quantity} пассажир, ${pass_class}`;
+
 
 const adult_minus_clk = document.querySelector('#adult_minus');
 const adult_quantity_clk = document.querySelector('#adult_quantity');
@@ -376,9 +461,6 @@ const baby_plus_clk = document.querySelector('#baby_plus');
 const class_any_clk = document.querySelector('#class_any');
 const class_business_clk = document.querySelector('#class_business');
 const class_economy_clk = document.querySelector('#class_economy');
-
-
-pass_total_inf.textContent = `${pass_quantity} пассажир, ${pass_class}`;
 
 
 adult_quantity_clk.textContent = adult;
@@ -492,15 +574,20 @@ const class_apply_clk = document.querySelector('#class_apply');
 class_apply_clk.addEventListener('click', ()=> {
     if(showpass) {
         pass_cell.style.display = 'none';
-        //to_clk.style.border = 'none';
-        } else {
+        pass_clk.style.border = 'none';
+    } else {
         from_cell.style.display = 'none';
         to_cell.style.display = 'none';
+        date_cell.style.display = 'none';
         pass_cell.style.display = 'block';
         showfrom = false;
-        showto = false;        
-        //to_clk.style.border = '2px solid blue';
+        showto = false;
+        showdate = false;
+        pass_clk.style.border = '1px solid blue';
     }
-    showpass = !showpass
-    
+    showpass = !showpass;
 })
+
+// -------------------------------------------------------------------------------------------------------------------------
+// 5. Начало - обработчик для даты
+

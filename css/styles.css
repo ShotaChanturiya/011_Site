@@ -47,7 +47,7 @@ a:hover {
     width: 1200px;
     margin: 0 auto;
 }
-
+/*   ----------------------------    секция ссылки    ----------------------------   */
 .header_list-item{
     cursor: pointer;
     transition: 0.4s;
@@ -57,6 +57,8 @@ a:hover {
 .header_list-item:hover{
     transform: translateY(-2px);
 }
+
+/*   ----------------------------    секция логотип    ----------------------------   */
 
 .logo{
     background-color: #6E36F7;
@@ -79,7 +81,7 @@ a:hover {
     font-weight: 500;
     font-size: 44px;
 }
-
+/*   ----------------------------    секция кнопки    ----------------------------   */
 .logo_menu{
     padding-top: 30px;
     display: flex;
@@ -120,7 +122,7 @@ a:hover {
     transform: translateY(-3px);
     cursor: pointer;
 }
-
+/*   ----------------------------    секция поиск билетов   ----------------------------   */
 .logo_table{
     display: flex; 
     justify-content: space-between;
@@ -208,6 +210,8 @@ a:hover {
     gap: 10px;
 }
 
+/*   ----------------------------    секция поиск билетов -> Туда | Обратно   ----------------------------   */
+
 .logo_table_cell_way{
     border-left: 1px solid gray;
     border-right: 1px solid gray;
@@ -225,7 +229,117 @@ a:hover {
     align-items: center;
     width: 50%;
     padding-left: 20px;
+    
 }
+
+.logo_table_cell_way_cell_2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    padding-left: 20px;
+    padding-right: 15px;
+    
+}
+
+.logo_table_cell_pop_date { /*  pop окно way (даты)    */
+    position: absolute;
+    background-color: var(--box-background-color);
+    border: 1px solid gray;
+    border-radius: 15px;
+    height: 420px;
+    width: 726px;
+    top: 80px;
+    left: 50px;
+    font-size: 14px;
+    display: none;
+}
+
+.logo_table_cell_pop_desc-date-comm { /*  комментарий (подсказка)    */
+    color: black;
+    font-size: 16px;
+    font-weight: normal;
+    padding-left: 25px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 60px;  
+}
+.date_block { /*  секция дат  */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 25px;
+    padding-right: 25px;
+    gap: 60px;
+}
+.date_block-left { /*  левая колонка  */
+    display: flex;
+    flex-direction: column;
+    
+    align-items: space-between;
+    color: gray;
+    width: 50%;
+}
+.date_block-right { /*  правая колонка  */
+    display: flex;
+    flex-direction: column;
+    
+    align-items: space-between;
+    color: gray;
+    width: 50%;
+}
+
+.date_navy-left { /*  строка навигации левая  */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50px;
+    gap: 90px;
+    color: black;
+}
+.date_navy-right { /*  строка навигации правая  */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    height: 50px;
+    gap: 90px;
+    color: black;
+}
+
+.date_content-left { /*  контент слева  */
+    display: flex;
+    flex-direction: column;
+}
+.date_content-right { /*  контент справа  */
+    display: flex;
+    flex-direction: column;   
+}
+
+.date_days {  /* строка дни недели  */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 25px;
+}
+.logo_table_cell_pop_desc-date-comm-last { /*  нижний комментарий (подсказка)    */
+    color: gray;
+    font-size: 12px;
+    font-weight: normal;
+    padding-left: 25px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+/*   ----------------------------    секция поиск билетов -> кнопка Туда <> Сюда   ----------------------------   */
+
 .logo_table_box-switch{
     position: absolute;
     background-color: var(--box-background-color);
@@ -238,9 +352,13 @@ a:hover {
     left: 233px;
     font-size: 20px;
 }
+
+/*   ----------------------------    секция поиск билетов -> общие для всех   ----------------------------   */
+
 .logo_table_cell-text{
     color: gray;
 }
+
 .logo_table_cell-small-text{
     color: gray;
     font-size: small;
@@ -263,6 +381,8 @@ a:hover {
     border: 0px;
     display: block;
 }
+
+/*   ----------------------------    секция поиск билетов -> Куда   ----------------------------   */
 
 .logo_table_cell_pop-desc-selected-to{
     display: none;
@@ -290,7 +410,7 @@ a:hover {
     height: 40px;
 }
 
-/*    секция пассажиры        */
+/*   ----------------------------    секция пассажиры    ----------------------------   */
 
 .logo_table_cell_pop_pass{
     position: absolute;
@@ -494,7 +614,7 @@ a:hover {
 }
 
 
-/*    секция кнопка поиска       */
+/*   ----------------------------    секция кнопка поиска    ----------------------------   */
 .button_find{
     background-color: rgba(255, 0, 0, 0.65);
     color: white;
@@ -504,7 +624,7 @@ a:hover {
     font-size: large;
     font-weight: bold;
 }
-
+/*   ----------------------------    секция Сложный маршрут    ----------------------------   */
 .logo_find_track{
     display: flex;
     justify-content: flex-start;
@@ -513,6 +633,9 @@ a:hover {
     padding-top: 10px;
     padding-bottom: 60px;
 }
+
+/*   ----------------------------    секция Main    ----------------------------   */
+
 .main{
     background-color: rgb(240, 240, 240);
     color: black;
