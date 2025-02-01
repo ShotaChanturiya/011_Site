@@ -210,7 +210,7 @@ a:hover {
     gap: 10px;
 }
 
-/*   ----------------------------    секция поиск билетов -> Туда | Обратно   ----------------------------   */
+/*   ----------------------------    секция поиск билетов ----> Туда | Обратно   ----------------------------   */
 
 .logo_table_cell_way{
     border-left: 1px solid gray;
@@ -220,6 +220,7 @@ a:hover {
     align-items: center;
     width: 280px;
     margin: 0;
+
 }
 
 .logo_table_cell_way_cell{
@@ -227,9 +228,10 @@ a:hover {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 50%;
+    width: 45%;
+    height: 100%;
     padding-left: 20px;
-    
+    box-sizing: border-box;
 }
 
 .logo_table_cell_way_cell_2{
@@ -237,13 +239,14 @@ a:hover {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 50%;
+    width: 55%;
+    height: 100%;
     padding-left: 20px;
     padding-right: 15px;
-    
+    box-sizing: border-box;
 }
 
-.logo_table_cell_pop_date { /*  pop окно way (даты)    */
+.logo_table_cell_pop_forward { /*  pop окно way (даты)    */
     position: absolute;
     background-color: var(--box-background-color);
     border: 1px solid gray;
@@ -357,6 +360,7 @@ a:hover {
 
 .logo_table_cell-text{
     color: gray;
+    box-sizing: border-box;
 }
 
 .logo_table_cell-small-text{

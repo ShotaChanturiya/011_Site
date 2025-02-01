@@ -1,15 +1,13 @@
 // -------------------------------------------------------------------------------------------------------------------------
 // Объявление переменных
-let selected_from = null;
-let selected_to = null;
 
-let fromObj = [ //fromArr
+let fromObj = [ //бывший массив fromArr
     {city: 'Варшава', code: 'WAW'},
     {city: 'Кишинев', code: 'RMO'},
     {city: 'Балице', code: 'KRK'}
 ]
 
-let toObj = [ //toArr
+let toObj = [ //бывший массив toArr
     {city: 'Париж', code: 'PAR'},
     {city: 'Нью-Йорк', code: 'NYC'},
     {city: 'Лондон', code: 'LON'},
@@ -17,26 +15,36 @@ let toObj = [ //toArr
 
 let tmpArr = []; //tmpArr
 
-let adult = 1;
-let children = 0;
-let baby = 0;
+let selected_from = fromObj[0].city;
+let selected_to = null;
+
+let date_forward = null;    // дата туда
+let date_back = null;       // дата обратно
+
+let adult = 1;              // количество взрослых
+let children = 0;           // количество детей
+let baby = 0;               // количество младенцев
 let pass_quantity = adult + children + baby;
 let pass_class = 'любой';
 
 
+
 // -------------------------------------------------------------------------------------------------------------------------
 // Дизайн - выпадающие pop-ы
-const from_cell = document.querySelector('.logo_table_cell_pop_from');
-const to_cell = document.querySelector('.logo_table_cell_pop_to');
+const from_cell = document.querySelector('.logo_table_cell_pop_from');      //выпадающие pop-ы с содержимым (выборка по классам)
+const to_cell = document.querySelector('.logo_table_cell_pop_to');          
+const forward_cell = document.querySelector('.logo_table_cell_pop_forward');
+const back_cell = document.querySelector('.logo_table_cell_pop_back');
+const date_cell_head = document.querySelector('.logo_table_cell_pop_desc-date-comm'); // заголовок pop-а с датами
 const pass_cell = document.querySelector('.logo_table_cell_pop_pass');
-const date_cell = document.querySelector('.logo_table_cell_pop_date');
 const button_find_clk = document.querySelector('.button_find');
 
 
-const from_clk = document.querySelector('#from_cell');
+const from_clk = document.querySelector('#from_cell');          //заголовки ячеек (окошечки) / (выборка по id-шникам)
 const switch_clk = document.querySelector('#switch_cell');
 const to_clk = document.querySelector('#to_cell');
-const date_clk = document.querySelector('#date_cell');
+const forward_clk = document.querySelector('#forward_cell');
+const back_clk = document.querySelector('#back_cell'); // <------- сделать действия для этой шняги
 const pass_clk = document.querySelector('#pass_cell');
 
 // -------------------------------------------------------------------------------------------------------------------------
@@ -50,12 +58,21 @@ function closePopTo() {
     to_cell.style.display = 'none';
 }
 
+function getById(id) {
+    return document.getElementById(id);
+}
+
+function createCalendar() {
+    getById;
+}
+
 // -------------------------------------------------------------------------------------------------------------------------
 // Действие - выпадающие pop-ы
 
 let showfrom = false;
 let showto = false;
-let showdate = false;
+let showforward = false;
+let showback = false; // <------- сделать activity для showback такие же как для showforward
 let showpass = false;
 
 
@@ -67,20 +84,18 @@ from_clk.addEventListener('click', ()=> {
     } else {
         from_cell.style.display = 'block';
         to_cell.style.display = 'none';
-        date_cell.style.display = 'none';
+        forward_cell.style.display = 'none';
+        back_cell.style.display = 'none';
         pass_cell.style.display = 'none';
         showto = false;
-        showdate = false;
+        showforward = false;
+        showback = false;
         showpass = false;
         from_clk.style.border = '1px solid blue';
-//закрываю бордеры
-        to_cell.style.display = 'none';
+//убираю бордеры
         to_clk.style.border = 'none';
-        date_cell.style.display = 'none';
-        date_clk.style.border = 'none';
-        date_clk.style.borderLeft = '1px solid gray';
-        date_clk.style.borderRight = '1px solid gray';
-        pass_cell.style.display = 'none';
+        forward_clk.style.border = 'none';
+        back_clk.style.border = 'none';
         pass_clk.style.border = 'none';
     }
     showfrom = !showfrom;
@@ -93,53 +108,77 @@ to_clk.addEventListener('click', ()=> {
     } else {
         from_cell.style.display = 'none';
         to_cell.style.display = 'block';
-        date_cell.style.display = 'none';
+        forward_cell.style.display = 'none';
+        back_cell.style.display = 'none';
         pass_cell.style.display = 'none';
         showfrom = false;
-        showdate = false;
+        showforward = false;
+        showback = false;
         showpass = false;
         to_clk.style.border = '1px solid blue';
-//закрываю бордеры
-        from_cell.style.display = 'none';
+//убираю бордеры
         from_clk.style.border = 'none';
         from_clk.style.borderRight = '1px solid gray';
-        date_cell.style.display = 'none';
-        date_clk.style.border = 'none';
-        date_clk.style.borderLeft = '1px solid gray';
-        date_clk.style.borderRight = '1px solid gray';
-        pass_cell.style.display = 'none';
+        forward_clk.style.border = 'none';
+        back_clk.style.border = 'none';
         pass_clk.style.border = 'none';
     }
     showto = !showto;
 })
 
-date_clk.addEventListener('click', ()=> {
-    if(showdate) {
-        date_cell.style.display = 'none';
-        date_clk.style.border = 'none';
-        date_clk.style.borderLeft = '1px solid gray';
-        date_clk.style.borderRight = '1px solid gray';
+forward_clk.addEventListener('click', ()=> {
+    if(showforward) {
+        forward_cell.style.display = 'none';
+        forward_clk.style.border = 'none';
     } else {
         from_cell.style.display = 'none';
         to_cell.style.display = 'none';
-        date_cell.style.display = 'block';
+        forward_cell.style.display = 'block';
+        back_cell.style.display = 'none';
         pass_cell.style.display = 'none';
         showfrom = false;
         showto = false;
+        showback = false;
         showpass = false;
-        date_clk.style.border = '1px solid blue';
-//закрываю бордеры
-        from_cell.style.display = 'none';
+        forward_clk.style.border = '1px solid blue';
+        date_cell_head.textContent = 'Выберите дату туда';
+        forward_cell.style.left = '50px'; // сдвигаю pop с датами влево (первоначальное значение в стилях так же 50px)
+//убираю бордеры
         from_clk.style.border = 'none';
         from_clk.style.borderRight = '1px solid gray';
-        to_cell.style.display = 'none';
         to_clk.style.border = 'none';
-        pass_cell.style.display = 'none';
         pass_clk.style.border = 'none';
+        back_clk.style.border = 'none';
     }
-    showdate = !showdate;
+    showforward = !showforward;
 })
 
+back_clk.addEventListener('click', ()=> {
+    if(showback) {
+        forward_cell.style.display = 'none';
+        back_clk.style.border = 'none';
+    } else {
+        from_cell.style.display = 'none';
+        to_cell.style.display = 'none';
+        forward_cell.style.display = 'block';
+        back_cell.style.display = 'none';
+        pass_cell.style.display = 'none';
+        showfrom = false;
+        showto = false;
+        showforward = false;
+        showpass = false;
+        back_clk.style.border = '1px solid blue';
+        date_cell_head.textContent = 'Выберите дату обратно';
+        forward_cell.style.left = '180px'; // сдвигаю pop с датами вправо
+//убираю бордеры
+        from_clk.style.border = 'none';
+        from_clk.style.borderRight = '1px solid gray';
+        to_clk.style.border = 'none';
+        pass_clk.style.border = 'none';
+        forward_clk.style.border = 'none';
+    }
+    showback = !showback;
+})
 
 pass_clk.addEventListener('click', ()=> {
     if(showpass) {
@@ -148,22 +187,20 @@ pass_clk.addEventListener('click', ()=> {
     } else {
         from_cell.style.display = 'none';
         to_cell.style.display = 'none';
-        date_cell.style.display = 'none';
+        forward_cell.style.display = 'none';
+        back_cell.style.display = 'none';
         pass_cell.style.display = 'block';
         showfrom = false;
         showto = false;
-        showdate = false;
+        showforward = false;
+        showback = false;
         pass_clk.style.border = '1px solid blue';
-//закрываю бордеры
-        from_cell.style.display = 'none';
+//убираю бордеры
         from_clk.style.border = 'none';
         from_clk.style.borderRight = '1px solid gray';
-        to_cell.style.display = 'none';
         to_clk.style.border = 'none';
-        date_cell.style.display = 'none';
-        date_clk.style.border = 'none';
-        date_clk.style.borderLeft = '1px solid gray';
-        date_clk.style.borderRight = '1px solid gray';
+        forward_clk.style.border = 'none';
+        back_clk.style.border = 'none';
     }
     showpass = !showpass;
 })
@@ -172,20 +209,29 @@ pass_clk.addEventListener('click', ()=> {
 button_find_clk.addEventListener('click', ()=> {
     from_cell.style.display = 'none';
     to_cell.style.display = 'none';
-    date_cell.style.display = 'none';
+    forward_cell.style.display = 'none';
+    back_cell.style.display = 'none';
     pass_cell.style.display = 'none';
     showfrom = false;
     showto = false;
-    showdate = false;
+    showforward = false;
+    showback = false;
     showpass = false;
 
-    // необходимо обнулить все ячейки и привести к значениям по умолчанию
+    // необходимо обнулить все ячейки и привести их значения к к значениям по умолчанию
     from_label_clk.textContent = fromObj[0].city;
     to_label_clk.textContent = null;
+
+    //убрать бордеры
+
+    //вывод результата в терминал
+    console.log(selected_from);
+    console.log(selected_to);
+    console.log(adult);
+    console.log(children);
+    console.log(baby);
+    console.log(pass_class);
     
-    //закрыть бордеры
-
-
 })
 // -------------------------------------------------------------------------------------------------------------------------
 // 1. Начало - обработчик для "Откуда"
@@ -241,7 +287,6 @@ row_from_0_item.addEventListener('click', ()=> {
     row_from_1_item.style.display = 'flex';
     row_from_2_item.style.display = 'flex';
     selected_from = fromObj[0].city;
-    console.log(selected_from);
     //from_cell.style.display = 'none';
     //closePopFrom();
     //setInterval (closePopFrom, 500);
@@ -258,7 +303,6 @@ row_from_1_item.addEventListener('click', ()=> {
     row_from_1_item.style.display = 'none';
     row_from_2_item.style.display = 'flex';
     selected_from = fromObj[1].city;
-    console.log(selected_from);
     //from_cell.style.display = 'none';
     //closePopFrom();
     //setInterval (closePopFrom, 500);
@@ -275,7 +319,6 @@ row_from_2_item.addEventListener('click', ()=> {
     row_from_1_item.style.display = 'flex';
     row_from_2_item.style.display = 'none';
     selected_from = fromObj[2].city;
-    console.log(selected_from);
     //from_cell.style.display = 'none';
     //closePopFrom();
     //setInterval (closePopFrom, 500);
@@ -290,7 +333,7 @@ row_from_selected_item.addEventListener('click', ()=> {
     row_from_1_item.style.display = 'flex';
     row_from_2_item.style.display = 'flex';    
     from_cell.style.height = '180px';
-    console.log(selected_from);
+    selected_from = null;
     //from_cell.style.display = 'none';
     //closePopFrom();
     //setInterval (closePopFrom, 500);
@@ -349,7 +392,6 @@ row_to_0_item.addEventListener('click', ()=> {
     to_label_logo.style.fontSize = 'small';
     selected_to = toObj[0].city;
     code_to_selected.textContent = toObj[0].code;
-    console.log(selected_to);
     //setInterval (closePopTo, 500);
 })
 
@@ -366,7 +408,6 @@ row_to_1_item.addEventListener('click', ()=> {
     to_label_logo.style.fontSize = 'small';
     selected_to = toObj[1].city;
     code_to_selected.textContent = toObj[1].code;
-    console.log(selected_to);
     //setInterval (closePopTo, 500);
 })
 
@@ -383,7 +424,6 @@ row_to_2_item.addEventListener('click', ()=> {
     to_label_logo.style.fontSize = 'small';
     selected_to = toObj[2].city;
     code_to_selected.textContent = toObj[2].code;
-    console.log(selected_to);
     //setInterval (closePopTo, 500);
 })
 
@@ -396,7 +436,7 @@ row_to_selected_item.addEventListener('click', ()=> {
     row_to_1_item.style.display = 'flex';
     row_to_2_item.style.display = 'flex';
     to_cell.style.height = '180px';
-    console.log(selected_from);
+    selected_to = null;
     //setInterval (closePopTo, 500);
 })
 
@@ -578,11 +618,13 @@ class_apply_clk.addEventListener('click', ()=> {
     } else {
         from_cell.style.display = 'none';
         to_cell.style.display = 'none';
-        date_cell.style.display = 'none';
+        forward_cell.style.display = 'none';
+        back_cell.style.display = 'none';
         pass_cell.style.display = 'block';
         showfrom = false;
         showto = false;
-        showdate = false;
+        showforward = false;
+        showback = false;
         pass_clk.style.border = '1px solid blue';
     }
     showpass = !showpass;
@@ -591,3 +633,81 @@ class_apply_clk.addEventListener('click', ()=> {
 // -------------------------------------------------------------------------------------------------------------------------
 // 5. Начало - обработчик для даты
 
+forward_cell.addEventListener('click', (e)=>{
+    e.stopPropagation();
+})
+
+const months = [
+    'Январь',
+    'Февраль',
+    'Март',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь'
+];
+
+const daysOfWeek = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+
+let date = new Date();
+let curMonth = date.getMonth();
+let curYear = date.getFullYear();
+let curDay = date.getDate();
+let nextMonth = curMonth+1;
+
+console.log(curMonth); // проверка (можно удалить)
+console.log(curYear);  // проверка (можно удалить)
+console.log(curDay);   // проверка (можно удалить)
+
+function showCurMonth() {
+    showMonth(curYear, curMonth);
+}
+
+function showMonth(year, month) {
+    getById('month').textContent = `${months[month]}  ${year}`;
+}
+
+console.log(`${months[curMonth]}  ${curYear}`); // проверка (можно удалить)
+
+const prevMonth_pic = document.querySelector('#prevMonth');  // стрелочка Предыдущий месяц
+const nextMonth_pic = document.querySelector('#nextMonth');  // стрелочка Следующий месяц
+
+const curMonth_label = document.querySelector('#curMonth');  // текущий месяц
+curMonth_label.textContent = `${months[curMonth]}  ${curYear}`; // применяем в заголовке текущий месяц
+
+const nextMonth_label = document.querySelector('#curMonthplusone');  // текущий месяц
+nextMonth_label.textContent = `${months[nextMonth]}  ${curYear}`; // применяем в заголовке следующий месяц
+
+
+prevMonth_pic.addEventListener('click', ()=> { // клик на иконке Предыдущий месяц
+    if(nextMonth === 0) {
+        nextMonth = 12;
+    }     
+    nextMonth_label.textContent = `${months[nextMonth-1]}  ${curYear}`;
+    if(curMonth === 0) {
+        curMonth = 12;
+        curYear--;
+    }    
+    curMonth_label.textContent = `${months[curMonth-1]}  ${curYear}`;
+    curMonth--;
+    nextMonth--;
+})
+
+nextMonth_pic.addEventListener('click', ()=> { // клик на иконке Следующий месяц
+    if(curMonth === 11) {
+        curMonth = -1;
+    }
+    curMonth_label.textContent = `${months[curMonth+1]}  ${curYear}`;
+    if(nextMonth === 11) {
+        curYear++;
+        nextMonth = -1;
+    }
+    nextMonth_label.textContent = `${months[nextMonth+1]}  ${curYear}`;
+    curMonth++;
+    nextMonth++;
+})
