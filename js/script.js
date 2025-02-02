@@ -62,9 +62,6 @@ function getById(id) {
     return document.getElementById(id);
 }
 
-function createCalendar() {
-    getById;
-}
 
 // -------------------------------------------------------------------------------------------------------------------------
 // Действие - выпадающие pop-ы
@@ -656,13 +653,10 @@ const daysOfWeek = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 
 let date = new Date();
 let curMonth = date.getMonth();
+let nextMonth = curMonth + 1;
 let curYear = date.getFullYear();
 let curDay = date.getDate();
-let nextMonth = curMonth+1;
 
-console.log(curMonth); // проверка (можно удалить)
-console.log(curYear);  // проверка (можно удалить)
-console.log(curDay);   // проверка (можно удалить)
 
 function showCurMonth() {
     showMonth(curYear, curMonth);
@@ -672,7 +666,42 @@ function showMonth(year, month) {
     getById('month').textContent = `${months[month]}  ${year}`;
 }
 
-console.log(`${months[curMonth]}  ${curYear}`); // проверка (можно удалить)
+
+let month = 1;
+let year = 2025;
+
+
+// выводим даты для текущего месяца
+const cur_month_days = document.querySelector('#cur_month_days');
+
+let firstDayOfMonth = new Date(year, month, 7).getDay();
+let lastDayOfMonth = new Date(year, month+1, 0).getDate();
+console.log(firstDayOfMonth);
+
+
+for (i = 1; i<=lastDayOfMonth; i++) {
+    
+    let dasy = document.createElement('div');
+    dasy.textContent = i;
+    cur_month_days.append(dasy);
+    dasy.classList.add('date_days_x_cell');
+
+}
+
+// выводим даты для следующего месяца
+const next_month_days = document.querySelector('#next_month_days');
+
+let firstDayOfNextMonth = new Date(year, month+1).getDay();
+let lastDayOfNextMonth = new Date(year, month+2, 0).getDate();
+
+for (i = 1; i<=lastDayOfNextMonth; i++) {  
+    let dasy = document.createElement('div');
+    dasy.textContent = i;
+    next_month_days.append(dasy);
+    dasy.classList.add('date_days_x_cell');
+}
+
+// --------------------- стрелочки для месяцев ---------------------
 
 const prevMonth_pic = document.querySelector('#prevMonth');  // стрелочка Предыдущий месяц
 const nextMonth_pic = document.querySelector('#nextMonth');  // стрелочка Следующий месяц
@@ -694,6 +723,25 @@ prevMonth_pic.addEventListener('click', ()=> { // клик на иконке П�
         curYear--;
     }    
     curMonth_label.textContent = `${months[curMonth-1]}  ${curYear}`;
+
+//  вывожу текущий месяц (ОСТАНОВИЛСЯ ЗДЕСЬ)
+month = curMonth-1;
+year = curYear;
+
+let firstDayOfMonth = new Date(year, month, 7).getDay();
+let lastDayOfMonth = new Date(year, month+1, 0).getDate();
+
+    cur_month_days.remove(dasy);
+
+for (i = 1; i<=lastDayOfMonth; i++) {
+    //let dasy = document.createElement('div');
+    dasy.textContent = i;
+    cur_month_days.append(dasy);
+    dasy.classList.add('date_days_x_cell');
+ 
+}
+// заканчиваю выводить текущий месяц
+
     curMonth--;
     nextMonth--;
 })

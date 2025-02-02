@@ -273,23 +273,21 @@ a:hover {
 .date_block { /*  секция дат  */
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     padding-left: 25px;
     padding-right: 25px;
-    gap: 60px;
+    gap: 35px;
 }
 .date_block-left { /*  левая колонка  */
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;   
     align-items: space-between;
     color: gray;
     width: 50%;
 }
 .date_block-right { /*  правая колонка  */
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column; 
     align-items: space-between;
     color: gray;
     width: 50%;
@@ -320,7 +318,7 @@ a:hover {
 }
 .date_content-right { /*  контент справа  */
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;  
 }
 
 .date_days {  /* строка дни недели  */
@@ -329,8 +327,26 @@ a:hover {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding-bottom: 25px;
+    padding-bottom: 0px;
 }
+
+.date_days_x { /* +++++++++++++++++++   временный стиль для цифр дней недели +++++++++++++++++++++++++++++++ */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 0px;
+
+}
+.date_days_x_cell { /* +++++++++++++++++++   временный стиль для цифр дней недели +++++++++++++++++++++++++++++++ */
+    width: calc(100%/7);
+    box-sizing: border-box;
+    justify-content: space-around;
+    padding: 15px;
+}
+
 .logo_table_cell_pop_desc-date-comm-last { /*  нижний комментарий (подсказка)    */
     color: gray;
     font-size: 12px;
