@@ -659,34 +659,22 @@ let nextYear = date.getFullYear();
 //let curDay = date.getDate();
 
 
-// function showCurMonth() {
-//     showMonth(curYear, curMonth);
-// }
-
-// function showMonth(year, month) {
-//     getById('month').textContent = `${months[month]}  ${year}`;
-// }
-
-
-   //let month = 1;
-   //let year = 2025;
-
 
 // выводим даты для текущего месяца _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_
 const cur_month_days = document.querySelector('#cur_month_days');
 
 
-function showCurMonth (year, month) {
-    console.log(`year = ${year}`);
-    console.log(`month = ${month}`);
+function showCurMonth (curYear, curMonth) {
+    console.log(`year = ${curYear}`);
+    console.log(`month = ${curMonth}`);
 
-let firstDayOfCurMonth = new Date(year, month, 1).getDay();
+let firstDayOfCurMonth = new Date(curYear, curMonth, 1).getDay();
 console.log(`firstDayOfCurMonth = ${firstDayOfCurMonth}`);
 
-let lastDayOfCurMonth = new Date(year, month+1, 0).getDate();
+let lastDayOfCurMonth = new Date(curYear, curMonth+1, 0).getDate();
 console.log(`lastDayOfCurMonth = ${lastDayOfCurMonth}`);
 
-let lastDayOfPrevMonth = new Date(year, month, 0).getDate();
+let lastDayOfPrevMonth = new Date(curYear, curMonth, 0).getDate();
 console.log(`lastDayOfPrevMonth = ${lastDayOfPrevMonth}`);
 
 for (i = 1; i <= lastDayOfCurMonth; i+=1) { // предыдущие дни месяца
@@ -707,7 +695,7 @@ for (i = 1; i <= lastDayOfCurMonth; i+=1) { // предыдущие дни ме�
     dasy.classList.add('date_days_x_cell_b');
 
     if(i === lastDayOfCurMonth) { // дни следующего месяца
-        let remainprevMonthDay = new Date (year, month, i).getDay();
+        let remainprevMonthDay = new Date (curYear, curMonth, i).getDay();
         let counter = 1;
         for(remainprevMonthDay; remainprevMonthDay < 7; remainprevMonthDay+=1){
             let dasy = document.createElement('div');
@@ -723,17 +711,17 @@ for (i = 1; i <= lastDayOfCurMonth; i+=1) { // предыдущие дни ме�
 // выводим даты для следующего месяца _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_
 const next_month_days = document.querySelector('#next_month_days');
 
-function showNextMonth (year, month) {
-    console.log(`year = ${year}`);
-    console.log(`month = ${month}`);
+function showNextMonth (nextYear, nextMonth) {
+    console.log(`year = ${nextYear}`);
+    console.log(`month = ${nextMonth}`);
 
-let firstDayOfNextMonth = new Date(year, month, 1).getDay();
+let firstDayOfNextMonth = new Date(nextYear, nextMonth, 1).getDay();
 console.log(`firstDayOfNextMonth = ${firstDayOfNextMonth}`);
 
-let lastDayOfNextMonth = new Date(year, month+1, 0).getDate();
+let lastDayOfNextMonth = new Date(nextYear, nextMonth+1, 0).getDate();
 console.log(`lastDayOfNextMonth = ${lastDayOfNextMonth}`);
 
- let lastDayOfCurMonth2 = new Date(year, month, 0).getDate();
+ let lastDayOfCurMonth2 = new Date(nextYear, nextMonth, 0).getDate();
  console.log(`lastDayOfCurMonth2 = ${lastDayOfCurMonth2}`);
 
 for (k = 1; k <= lastDayOfNextMonth; k+=1) {  // предыдущие дни для следующего месяца
@@ -755,7 +743,7 @@ for (k = 1; k <= lastDayOfNextMonth; k+=1) {  // предыдущие дни д�
     dasb.classList.add('date_days_x_cell_b');
 
     if(k === lastDayOfNextMonth) { // дни следующего месяца
-        let remainnextMonthDay = new Date (year, month+1, i).getDay();
+        let remainnextMonthDay = new Date (nextYear, nextMonth+1, k).getDay();
         let counter2 = 1;
         for(remainnextMonthDay; remainnextMonthDay < 8; remainnextMonthDay+=1){
             let dasb = document.createElement('div');
