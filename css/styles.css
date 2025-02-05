@@ -353,6 +353,14 @@ a:hover {
     padding: 15px;
     color: black;
 }
+.date_days_x_cell_b_c{
+    width: calc(100%/7);
+    box-sizing: border-box;
+    justify-content: space-around;
+    padding: 15px;
+    color: red;
+    font-weight: bold;
+}
 .logo_table_cell_pop_desc-date-comm-last { /*  нижний комментарий (подсказка)    */
     color: gray;
     font-size: 12px;

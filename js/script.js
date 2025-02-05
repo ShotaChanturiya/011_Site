@@ -656,32 +656,40 @@ let curMonth = date.getMonth();
 let nextMonth = date.getMonth() + 1;
 let curYear = date.getFullYear();
 let nextYear = date.getFullYear();
-//let curDay = date.getDate();
+let curDay = date.getDate();
 
-
+let Month = date.getMonth();
+let Year = date.getFullYear();
 
 // выводим даты для текущего месяца _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_
 const cur_month_days = document.querySelector('#cur_month_days');
 
 
 function showCurMonth (curYear, curMonth) {
-    console.log(`year = ${curYear}`);
-    console.log(`month = ${curMonth}`);
+    console.log(`curYear = ${curYear}`);
+    console.log(`curMonth = ${curMonth}`);
 
-let firstDayOfCurMonth = new Date(curYear, curMonth, 1).getDay();
+let firstDayOfCurMonth = new Date(curYear, curMonth, 1).getDay(); //6-й день по счету
 console.log(`firstDayOfCurMonth = ${firstDayOfCurMonth}`);
 
-let lastDayOfCurMonth = new Date(curYear, curMonth+1, 0).getDate();
+if(firstDayOfCurMonth === 0){
+    firstDayOfCurMonth = 7
+}
+
+let lastDayOfCurMonth = new Date(curYear, curMonth+1, 0).getDate(); //28
 console.log(`lastDayOfCurMonth = ${lastDayOfCurMonth}`);
 
-let lastDayOfPrevMonth = new Date(curYear, curMonth, 0).getDate();
+let lastDayOfPrevMonth = new Date(curYear, curMonth, 0).getDate();  //31 день в предыдущем месяце
 console.log(`lastDayOfPrevMonth = ${lastDayOfPrevMonth}`);
 
-for (i = 1; i <= lastDayOfCurMonth; i+=1) { // предыдущие дни месяца
+for (i = 1; i <= lastDayOfCurMonth; i+=1) { // предыдущие дни для текущего месяца
     if(i === 1) {
-        let prevMonthDay = lastDayOfPrevMonth - firstDayOfCurMonth + 2;
+        //let prevMonthDay = lastDayOfPrevMonth - firstDayOfCurMonth + 2; // 31 - 6 = 25
+        let curMonthcycleDays = 7 - (8 - firstDayOfCurMonth); // 5
+        let prevMonthDay = lastDayOfPrevMonth + 1 - curMonthcycleDays; // 31 + 1 - 5 = 27
         console.log(`prevMonthDayStartfrom = ${prevMonthDay}`);
-        for(let j=1; j<firstDayOfCurMonth; j+=1){
+
+        for(let j=1; j<=curMonthcycleDays; j+=1){
             let dasy = document.createElement('div');
             dasy.textContent = prevMonthDay;
             cur_month_days.append(dasy);
@@ -692,21 +700,31 @@ for (i = 1; i <= lastDayOfCurMonth; i+=1) { // предыдущие дни ме�
     let dasy = document.createElement('div'); // текущие дни месяца
     dasy.textContent = i;
     cur_month_days.append(dasy);
-    dasy.classList.add('date_days_x_cell_b');
 
-    if(i === lastDayOfCurMonth) { // дни следующего месяца
-        let remainprevMonthDay = new Date (curYear, curMonth, i).getDay();
-        let counter = 1;
-        for(remainprevMonthDay; remainprevMonthDay < 7; remainprevMonthDay+=1){
-            let dasy = document.createElement('div');
-            dasy.textContent = counter;
-            cur_month_days.append(dasy);
-            dasy.classList.add('date_days_x_cell');
-            counter+=1;
+    if(i === curDay & Month === curMonth & Year === curYear) {  // проверка на сегодня
+        dasy.classList.add('date_days_x_cell_b_c');
+    } else {
+        dasy.classList.add('date_days_x_cell_b');
+    }
+
+    if(i === lastDayOfCurMonth) { // выводим дни следующего месяца //28
+        let lastcurMonthDay = new Date(curYear, curMonth, i).getDay(); // какой по счету недели, последний день месяца // 5-й день недели
+        if (lastcurMonthDay > 0) {
+            console.log(`lastcurMonthDay = ${lastcurMonthDay}`);
+            let counter = 1;
+            let remaincurMonthDays = 7 - lastcurMonthDay; // сколько осталось вывести дней для заполнения таблици // 2
+            console.log(`remaincurMonthDays = ${remaincurMonthDays}`);
+
+            for(counter; counter <= remaincurMonthDays; counter++){
+                let dasy = document.createElement('div');
+                dasy.textContent = counter;
+                cur_month_days.append(dasy);
+                dasy.classList.add('date_days_x_cell');
+            }
         }
     }
     
-  }
+}
 }
 // выводим даты для следующего месяца _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_
 const next_month_days = document.querySelector('#next_month_days');
@@ -715,21 +733,28 @@ function showNextMonth (nextYear, nextMonth) {
     console.log(`year = ${nextYear}`);
     console.log(`month = ${nextMonth}`);
 
-let firstDayOfNextMonth = new Date(nextYear, nextMonth, 1).getDay();
+let firstDayOfNextMonth = new Date(nextYear, nextMonth, 1).getDay(); // какой по счету первый день следующего месяца
 console.log(`firstDayOfNextMonth = ${firstDayOfNextMonth}`);
 
-let lastDayOfNextMonth = new Date(nextYear, nextMonth+1, 0).getDate();
+if(firstDayOfNextMonth === 0){
+    firstDayOfNextMonth = 7; ///вопросики
+    console.log(`firstDayOfNextMonth = ${firstDayOfNextMonth}`);
+}
+
+let lastDayOfNextMonth = new Date(nextYear, nextMonth+1, 0).getDate(); // сколько дней в следующем после следующего месяця
 console.log(`lastDayOfNextMonth = ${lastDayOfNextMonth}`);
 
- let lastDayOfCurMonth2 = new Date(nextYear, nextMonth, 0).getDate();
+ let lastDayOfCurMonth2 = new Date(nextYear, nextMonth, 0).getDate(); // сколько дней в следующем месяце
  console.log(`lastDayOfCurMonth2 = ${lastDayOfCurMonth2}`);
 
 for (k = 1; k <= lastDayOfNextMonth; k+=1) {  // предыдущие дни для следующего месяца
     if(k === 1) {
-        let curMonthDay = lastDayOfCurMonth2 - firstDayOfNextMonth + 2;
+        //let curMonthDay = lastDayOfCurMonth2 - firstDayOfNextMonth + 2;
+        let nextMonthcycleDays = 7 - (8 - firstDayOfNextMonth); // 5
+        let curMonthDay = lastDayOfCurMonth2 + 1 - nextMonthcycleDays; // 31 + 1 - 5 = 27
         console.log(`curMonthDayStartfrom = ${curMonthDay}`);
 
-        for(let l = 1; l < firstDayOfNextMonth; l+=1){
+        for(let l = 1; l <= nextMonthcycleDays; l+=1){
             let dasb = document.createElement('div');
             dasb.textContent = curMonthDay;
             next_month_days.append(dasb);
@@ -743,9 +768,9 @@ for (k = 1; k <= lastDayOfNextMonth; k+=1) {  // предыдущие дни д�
     dasb.classList.add('date_days_x_cell_b');
 
     if(k === lastDayOfNextMonth) { // дни следующего месяца
-        let remainnextMonthDay = new Date (nextYear, nextMonth+1, k).getDay();
+        let remainnextMonthDay = new Date(nextYear, nextMonth+1, k).getDay();
         let counter2 = 1;
-        for(remainnextMonthDay; remainnextMonthDay < 8; remainnextMonthDay+=1){
+        for(remainnextMonthDay; remainnextMonthDay < 7; remainnextMonthDay+=1){
             let dasb = document.createElement('div');
             dasb.textContent = counter2;
             next_month_days.append(dasb);
@@ -755,6 +780,10 @@ for (k = 1; k <= lastDayOfNextMonth; k+=1) {  // предыдущие дни д�
     }
  }
 }
+
+
+
+
 // --------------------- стрелочки для месяцев ---------------------
 
 const prevMonth_pic = document.querySelector('#prevMonth');  // стрелочка Предыдущий месяц
@@ -770,51 +799,86 @@ nextMonth_label.textContent = `${months[nextMonth]}  ${curYear}`; // приме�
 prevMonth_pic.addEventListener('click', ()=> { // клик на иконке Предыдущий месяц
     cur_month_days.innerHTML =''; // стираем блок Следующий месяц
     next_month_days.innerHTML =''; // стираем блок Следующий месяц
-    if(nextMonth === 0) {
-        nextMonth = 12;
-    }     
-    nextMonth_label.textContent = `${months[nextMonth-1]}  ${curYear}`;
-    if(curMonth === 0) {
-        curMonth = 12;
-        curYear--;
-    }    
-    curMonth_label.textContent = `${months[curMonth-1]}  ${curYear}`;
 
     curMonth--;
     nextMonth--;
 
-//  вывожу текущий месяц 
- showCurMonth(curYear, curMonth);
- // заканчиваю выводить текущий месяц
- showNextMonth(nextYear, nextMonth);
+    if(curMonth === -1) {
+        curMonth = 11;
+        curYear--;
+    }
 
+    if(nextMonth === -1) {
+        nextMonth = 11;
+        nextYear--;
+    }     
+
+    curMonth_label.textContent = `${months[curMonth]}  ${curYear}`;
+    nextMonth_label.textContent = `${months[nextMonth]}  ${nextYear}`;
+
+
+//  вывожу текущий месяц 
+showCurMonth(curYear, curMonth);
+//  вывожу следующий месяц
+showNextMonth(nextYear, nextMonth);    
 
 })
 
-showCurMonth(curYear, curMonth);
+
 
 
 nextMonth_pic.addEventListener('click', ()=> { // клик на иконке Следующий месяц
     cur_month_days.innerHTML =''; // стираем блок Следующий месяц
     next_month_days.innerHTML =''; // стираем блок Следующий месяц
 
-    if(curMonth === 11) {
-        curMonth = -1;
-    }
-    curMonth_label.textContent = `${months[curMonth+1]}  ${nextYear}`;
-    if(nextMonth === 11) {
-        nextYear++;
-        nextMonth = -1;
-    }
-    nextMonth_label.textContent = `${months[nextMonth+1]}  ${nextYear}`;
     curMonth++;
     nextMonth++;
-//  вывожу следующего месяц 
+
+    if(curMonth === 12) {
+        curMonth = 0;
+        curYear++;
+    }
+
+    if(nextMonth === 12) {
+        nextMonth = 0;
+        nextYear++;
+    }
+
+    curMonth_label.textContent = `${months[curMonth]}  ${curYear}`;
+    nextMonth_label.textContent = `${months[nextMonth]}  ${nextYear}`;
+
+//  вывожу текущий месяц 
 showCurMonth(curYear, curMonth);
-    showNextMonth(nextYear, nextMonth);
-// заканчиваю выводить следующий месяц
+//  вывожу следующий месяц
+showNextMonth(nextYear, nextMonth);
+
 })
 
-  showNextMonth(nextYear, nextMonth);
+
+//  первый раз вывожу текущий месяц 
+showCurMonth(curYear, curMonth);
+//  первый раз вывожу следующий месяц
+showNextMonth(nextYear, nextMonth);
+
 
 console.log('10: Ok');
+
+
+// let y = date.getFullYear();
+// let m = date.getMonth();
+// //let d = date.getDate();
+// let a = new Date(y, m+1, 0).getDate();
+
+let y = 2024;
+let m = 11;
+//let d = date.getDate();
+let a = new Date(y, m, 1).getDay();
+
+// console.log(y)
+// console.log(m)
+// //console.log(d)
+ console.log(a)
+
+// for (d = 0; d<=28; d+=1) {
+// console.log(`new Date(y, m, ${d}).getDay()`)
+// }
