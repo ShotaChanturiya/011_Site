@@ -27,7 +27,9 @@ let baby = 0;               // количество младенцев
 let pass_quantity = adult + children + baby;
 let pass_class = 'любой';
 
+class UserRequest {
 
+}
 
 // -------------------------------------------------------------------------------------------------------------------------
 // Дизайн - выпадающие pop-ы
@@ -661,7 +663,7 @@ let curDay = date.getDate();
 let Month = date.getMonth();
 let Year = date.getFullYear();
 
-// выводим даты для текущего месяца _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_
+// выводим даты для текущего месяца _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_<<<<<<<<<<<<<<<<<<<<<
 const cur_month_days = document.querySelector('#cur_month_days');
 
 
@@ -693,18 +695,27 @@ for (i = 1; i <= lastDayOfCurMonth; i+=1) { // предыдущие дни дл�
             let dasy = document.createElement('div');
             dasy.textContent = prevMonthDay;
             cur_month_days.append(dasy);
-            dasy.classList.add('date_days_x_cell');
+            dasy.classList.add('date_days_x_cell_u');
             prevMonthDay+=1;
         }
     }
-    let dasy = document.createElement('div'); // текущие дни месяца
-    dasy.textContent = i;
-    cur_month_days.append(dasy);
+    // let dasy = document.createElement('div'); // текущие дни месяца
+    // dasy.textContent = i;
+    // cur_month_days.append(dasy);
 
     if(i === curDay & Month === curMonth & Year === curYear) {  // проверка на сегодня
+
+        let dasy = document.createElement('div');
+        dasy.textContent = `Сегодня ${i}`;
+        cur_month_days.append(dasy);
         dasy.classList.add('date_days_x_cell_b_c');
+
+
     } else {
-        dasy.classList.add('date_days_x_cell_b');
+       let dasy = document.createElement('div'); // текущие дни месяца
+        dasy.textContent = i;
+        dasy.classList.add('date_days_x_cell_z');
+        cur_month_days.append(dasy);
     }
 
     if(i === lastDayOfCurMonth) { // выводим дни следующего месяца //28
@@ -719,14 +730,15 @@ for (i = 1; i <= lastDayOfCurMonth; i+=1) { // предыдущие дни дл�
                 let dasy = document.createElement('div');
                 dasy.textContent = counter;
                 cur_month_days.append(dasy);
-                dasy.classList.add('date_days_x_cell');
+                dasy.classList.add('date_days_x_cell_u');
             }
         }
     }
     
 }
 }
-// выводим даты для следующего месяца _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_
+
+// выводим даты для следующего месяца _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_>>>>>>>>>>>>>>>>>>
 const next_month_days = document.querySelector('#next_month_days');
 
 function showNextMonth (nextYear, nextMonth) {
@@ -758,30 +770,69 @@ for (k = 1; k <= lastDayOfNextMonth; k+=1) {  // предыдущие дни д�
             let dasb = document.createElement('div');
             dasb.textContent = curMonthDay;
             next_month_days.append(dasb);
-            dasb.classList.add('date_days_x_cell');
+            dasb.classList.add('date_days_x_cell_u');
             curMonthDay+=1;
         }
     }
-    let dasb = document.createElement('div');
+    let dasb = document.createElement('div'); // выводим дни следующего месяца
     dasb.textContent = k;
-    next_month_days.append(dasb);
     dasb.classList.add('date_days_x_cell_b');
 
-    if(k === lastDayOfNextMonth) { // дни следующего месяца
-        let remainnextMonthDay = new Date(nextYear, nextMonth+1, k).getDay();
-        let counter2 = 1;
-        for(remainnextMonthDay; remainnextMonthDay < 7; remainnextMonthDay+=1){
-            let dasb = document.createElement('div');
-            dasb.textContent = counter2;
-            next_month_days.append(dasb);
-            dasb.classList.add('date_days_x_cell');
-            counter2+=1;
+    dasb.addEventListener('click', ()=>{
+        console.log('Ckick');
+        paintDay(dasb);
+    })
+    allDays.push(dasb);
+    next_month_days.append(dasb);
+
+    if(k === lastDayOfNextMonth) { // выводим дни следующего после следующего месяца
+        //let remainnextMonthDay = new Date(nextYear, nextMonth+1, k).getDay();
+        let lastNextMonthDay = new Date(nextYear, nextMonth, k).getDay(); // какой по счету недели, последний день месяца // 5-й день недели
+        if (lastNextMonthDay > 0) {
+            let counter2 = 1;
+            let remainnextMonthDays = 7 - lastNextMonthDay; // сколько осталось вывести дней для заполнения таблици 
+            for(counter2; counter2 <= remainnextMonthDays; counter2++){
+                let dasb = document.createElement('div');
+                dasb.textContent = counter2;
+                next_month_days.append(dasb);
+                dasb.classList.add('date_days_x_cell_u');
+            }
         }
     }
  }
 }
 
+let counter3 = 0;
+let allDays = [];
+let clickedDays = [];
+let betweenDays = [];
+function paintDay(dasb) {
+    if(counter3 > 1) {
+        counter3 = 0
+        clickedDays.forEach(item => item.style.backgroundColor = 'inherit');
+        clickedDays.forEach(item => item.style.color = 'black');
+        clickedDays.forEach(item => item.style.borderRadius = '0');
+        clickedDays = [];
+        betweenDays.forEach(item => item.style.backgroundColor = 'inherit');
+        betweenDays = [];
+    }
+    clickedDays.push(dasb);
+    if(counter3 === 1) {
+        let first = allDays.indexOf(clickedDays[0]);
+        let last = allDays.indexOf(clickedDays[1]);
+        betweenDays = allDays.slice(first+1, last);
+        betweenDays.forEach(item => item.style.backgroundColor = 'pink');
+        // counter3 = 0
+        // clickedDays.forEach(item => item.style.backgroundColor = 'inherit');
+        // clickedDays = [];
+    }
 
+    
+    dasb.style.backgroundColor = 'rgba(255, 0, 0, 0.65)';
+    dasb.style.borderRadius = '5px';
+    dasb.style.color = 'white';
+    counter3 += 1;
+}
 
 
 // --------------------- стрелочки для месяцев ---------------------

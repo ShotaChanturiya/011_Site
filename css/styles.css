@@ -251,7 +251,7 @@ a:hover {
     background-color: var(--box-background-color);
     border: 1px solid gray;
     border-radius: 15px;
-    height: 520px;
+    height: 500px;
     width: 726px;
     top: 80px;
     left: 50px;
@@ -345,6 +345,21 @@ a:hover {
     box-sizing: border-box;
     justify-content: space-around;
     padding: 15px;
+
+}
+.date_days_x_cell_u { /* +++++++++++++++++++   временный стиль для цифр дней недели +++++++++++++++++++++++++++++++ */
+    width: calc(100%/7);
+    box-sizing: border-box;
+    justify-content: space-around;
+    padding: 15px;
+    color: white;
+}
+.date_days_x_cell_z { /* +++++++++++++++++++   временный стиль для цифр дней недели +++++++++++++++++++++++++++++++ */
+    width: calc(100%/7);
+    box-sizing: border-box;
+    justify-content: space-around;
+    padding: 15px;
+    color: gray;
 }
 .date_days_x_cell_b{
     width: calc(100%/7);
@@ -356,10 +371,15 @@ a:hover {
 .date_days_x_cell_b_c{
     width: calc(100%/7);
     box-sizing: border-box;
-    justify-content: space-around;
-    padding: 15px;
-    color: red;
-    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    padding: 10px 0px;
+    color: black;
+    background-color: gainsboro;
+    border-radius: 5px;
+    word-wrap: wrap;
+    font-size: 10px;
 }
 .logo_table_cell_pop_desc-date-comm-last { /*  нижний комментарий (подсказка)    */
     color: gray;
@@ -370,6 +390,9 @@ a:hover {
     justify-content: flex-start;
     align-items: center;
     gap: 10px;
+    position:absolute;
+    top: 460px;
+    left: 15px;
 }
 /*   ----------------------------    секция поиск билетов -> кнопка Туда <> Сюда   ----------------------------   */
 
