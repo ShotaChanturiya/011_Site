@@ -706,7 +706,7 @@ for (i = 1; i <= lastDayOfCurMonth; i+=1) { // предыдущие дни дл�
     if(i === curDay & Month === curMonth & Year === curYear) {  // проверка на сегодня
 
         let dasy = document.createElement('div');
-        dasy.textContent = `Сегодня ${i}`;
+        dasy.textContent = `Сегодня ${i}`;  // формируем содержание ячейки
         cur_month_days.append(dasy);
         dasy.classList.add('date_days_x_cell_b_c');
 
@@ -779,7 +779,6 @@ for (k = 1; k <= lastDayOfNextMonth; k+=1) {  // предыдущие дни д�
     dasb.classList.add('date_days_x_cell_b');
 
     dasb.addEventListener('click', ()=>{
-        console.log('Ckick');
         paintDay(dasb);
     })
     allDays.push(dasb);
@@ -806,18 +805,52 @@ let counter3 = 0;
 let allDays = [];
 let clickedDays = [];
 let betweenDays = [];
-function paintDay(dasb) {
+
+function paintDay(dasb) {    // функция закрашивания ячейки
     if(counter3 > 1) {
         counter3 = 0
         clickedDays.forEach(item => item.style.backgroundColor = 'inherit');
         clickedDays.forEach(item => item.style.color = 'black');
         clickedDays.forEach(item => item.style.borderRadius = '0');
+        clickedDays.forEach(item => item.classList = 'date_days_x_cell_b'); 
+        
+        let r1 = allDays.indexOf(clickedDays[0]);
+        r1++;
+        clickedDays[0].textContent = `${r1}`;
+        
+        let r2 = allDays.indexOf(clickedDays[1]);
+        r2++;
+        clickedDays[1].textContent = `${r2}`;
         clickedDays = [];
+
         betweenDays.forEach(item => item.style.backgroundColor = 'inherit');
         betweenDays = [];
     }
+
+    if(counter3 === 0) {//если кликнули по первой ячейке -> покрасить, применить текст ТУДА
+        let fa = dasb.textContent;
+        console.log(`FA = ${fa}`);
+        dasb.textContent = `Туда ${fa}`;  // формируем содержание ячейки
+        dasb.classList.add('date_days_x_cell_b_c_2');
+    }  
+
+
     clickedDays.push(dasb);
-    if(counter3 === 1) {
+
+
+    //let chkDay = allDays.indexOf(clickedDays[0]);              // если щелкаем по дате раньше 
+    //     if(clickedDays.length && +dasb.textContent < chkDay+1){  // если щелкаем по дате раньше
+    //     return;                                                 // если щелкаем по дате раньше
+    // }                                                           // если щелкаем по дате раньше
+
+
+    if(counter3 === 1) { //если кликнули по второй ячейке -> покрасить, применить текст ОБРАТНО
+
+        let fb = dasb.textContent;
+
+        dasb.textContent = `Обратно ${fb}`;  // формируем содержание ячейки
+        dasb.classList.add('date_days_x_cell_b_c_3');
+
         let first = allDays.indexOf(clickedDays[0]);
         let last = allDays.indexOf(clickedDays[1]);
         betweenDays = allDays.slice(first+1, last);
@@ -828,6 +861,7 @@ function paintDay(dasb) {
     }
 
     
+    //clickedDays.push(dasb); 
     dasb.style.backgroundColor = 'rgba(255, 0, 0, 0.65)';
     dasb.style.borderRadius = '5px';
     dasb.style.color = 'white';
